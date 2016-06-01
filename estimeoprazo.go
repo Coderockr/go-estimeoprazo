@@ -127,6 +127,40 @@ func filterInputToFloat(value string) float64 {
 	return result
 }
 
+/**
+ * @api {post} /estimeoprazo Run Monte Carlo Simulations
+ * @apiVersion 1.0.0
+ * @apiName EstimePrazo
+ * @apiGroup GoServices
+ *
+ * @apiParam (parameters) {String} MinTasks Minimum of tasks to complete
+ * @apiParam (parameters) {String} MaxTasks Maximum of tasks to complete
+ * @apiParam (parameters) {String} MinSplitTasks Split tasks mininum value
+ * @apiParam (parameters) {String} MaxSplitTasks Split tasks maxium value
+ * @apiParam (parameters) {String} MinTasksDone Minimum of tasks done
+ * @apiParam (parameters) {String} MaxTasksDone Maximum of tasks done
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * HTTP/1.1 200 OK
+ *[
+ *	{
+ *	  "Likelihood": 85,
+ *	  "Weeks": 5
+ *	},
+ *	{
+ *	  "Likelihood": 90,
+ *	  "Weeks": 5
+ *	},
+ *	{
+ *	  "Likelihood": 95,
+ *	  "Weeks": 6
+ *	},
+ *	{
+ *	  "Likelihood": 100,
+ *	  "Weeks": 10
+ *	}
+ *]
+ */
 func init() {
 
 	http.HandleFunc("/", HandleIndex)
