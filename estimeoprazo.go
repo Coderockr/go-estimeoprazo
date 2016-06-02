@@ -114,7 +114,9 @@ func HandleIndex(w http.ResponseWriter, r *http.Request) {
 	config.MaxTasksDone = filterInputToFloat(r.FormValue("MaxTasksDone"))
 	config.Simulations = 1000
 
+	w.Header().Add("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Content-Type", "application/json")
+
 	result, _ := json.Marshal(Forecast(config))
 	io.WriteString(w, string(result))
 }
