@@ -98,3 +98,14 @@ func TestForecast(t *testing.T) {
             )
     }
 }
+
+func TestForecastHugeProject(t *testing.T) {
+    var configTest = Config{999, 1000, 1, 3, 30, 40, 1000};
+    result := Forecast(configTest)
+    if result[19].Weeks != 87 && result[19].Weeks != 88 {
+        t.Error(
+                "expected", 87,
+                "got", result[19].Weeks,
+            )
+    }
+}
